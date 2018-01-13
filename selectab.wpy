@@ -1,0 +1,107 @@
+<template>
+  <view class="band-selectab">
+    <input value="{{currentValue}}" style="display:none;" />
+    <repeat for="{{total}}" key="idx" index="idx" item="item">
+      <view
+        class="band-selectab-item {{currentIdx === idx ? 'is-active' : ''}}"
+        @tap="selectNum({{item}}, {{idx}})">
+        <text class="band-selectab-label">{{item}}</text>
+      </view>
+    </repeat>
+    <view
+      class="band-selectab-mask"
+      style="background-color:{{bgcolor}};left:{{bgLeft}};right:{{bgRight}};" />
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Selectab extends wepy.component {
+
+  props = {
+    total: {
+      type: Array,
+      default: [1, 2, 3, 4]
+    },
+    value: {
+      type: String,
+      default: 1
+    },
+    bgcolor: String
+  };
+
+  data = {
+    currentIdx: 0,
+    currentValue: ''
+  };
+
+  computed = {
+    bgLeft () {
+      return `${(this.currentIdx) * (100 / this.total.length)}%`;
+    },
+    bgRight () {
+      return `${(this.total.length - this.currentIdx - 1) * (100 / this.total.length)}%`;
+    }
+  };
+
+  onLoad() {
+    if (this.total.indexOf(this.value) > -1) {
+      this.currentValue = this.value;
+      this.currentIdx = this.total.indexOf(this.value);
+      return;
+    }
+    this.currentValue = this.total[0];
+  };
+
+  watch = {
+    currentValue(val) {
+      this.$emit('selected', val);
+    }
+  };
+
+  methods = {
+    selectNum (val, idx) {
+      this.currentValue = val;
+      this.currentIdx = idx;
+    }
+  };
+}
+</script>
+
+<style>
+.band-selectab {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 0;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+.band-selectab .band-selectab-item {
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+.band-selectab .band-selectab-item.is-active .band-selectab-label {
+  transition: color 0.3s ease;
+  color: #fff;
+}
+.band-selectab .band-selectab-mask {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: #444751;
+  border-radius: inherit;
+  transition-property: left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+</style>

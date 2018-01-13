@@ -1,0 +1,12 @@
+{
+  "name": "wepy-com-selectab",
+  "version": "0.0.1",
+  "description": "wepy component, for use in selecting number.",
+  "main": "selectab.wpy",
+  "keywords": [
+    "wepy",
+    "selectab"
+  ],
+  "author": "ColMugX",
+  "license": "MIT"
+}
