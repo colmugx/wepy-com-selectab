@@ -1,6 +1,6 @@
-# wepy-selectab
+# wepy-com-selectab
 
-[![NPM](https://nodei.co/npm/vue-number-tab.png)](https://nodei.co/npm/vue-number-tab/)
+[![NPM](https://nodei.co/npm/wepy-com-selectab.png)](https://nodei.co/npm/wepy-com-selectab/)
 
 > 适用于选座位等数字或者类型选择的组件，这是一个从`Bandix`独立出来的组件。
 
@@ -8,12 +8,12 @@
 
 ## 安装 Install
 
-> npm install -S wepy-selectab
+> npm install -S wepy-com-selectab
 
 ## 使用 Usage
 
 ```js
-import Selectab from 'wepy-selectab'
+import Selectab from 'wepy-com-selectab'
 
 export ...
 
