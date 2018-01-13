@@ -6,6 +6,8 @@
 
 早期Vue实现版本（异曲同工）：[https://github.com/ColMugX/vue-number-tab](https://github.com/ColMugX/vue-number-tab)
 
+![](https://github.com/ColMugX/vue-number-tab/raw/master/screenshots/1.gif)
+
 ## 安装 Install
 
 > npm install -S wepy-com-selectab
