@@ -16,9 +16,7 @@
 
 <script>
 import wepy from 'wepy';
-
 export default class Selectab extends wepy.component {
-
   props = {
     total: {
       type: Array,
@@ -30,12 +28,10 @@ export default class Selectab extends wepy.component {
     },
     bgcolor: String
   };
-
   data = {
     currentIdx: 0,
     currentValue: ''
   };
-
   computed = {
     bgLeft () {
       return `${(this.currentIdx) * (100 / this.total.length)}%`;
@@ -44,7 +40,6 @@ export default class Selectab extends wepy.component {
       return `${(this.total.length - this.currentIdx - 1) * (100 / this.total.length)}%`;
     }
   };
-
   onLoad() {
     if (this.total.indexOf(this.value) > -1) {
       this.currentValue = this.value;
@@ -53,13 +48,11 @@ export default class Selectab extends wepy.component {
     }
     this.currentValue = this.total[0];
   };
-
   watch = {
     currentValue(val) {
       this.$emit('selected', val);
     }
   };
-
   methods = {
     selectNum (val, idx) {
       this.currentValue = val;
