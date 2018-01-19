@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import wepy from 'wepy';
+import wepy from "wepy";
 export default class Selectab extends wepy.component {
   props = {
     total: {
@@ -30,14 +30,15 @@ export default class Selectab extends wepy.component {
   };
   data = {
     currentIdx: 0,
-    currentValue: ''
+    currentValue: ""
   };
   computed = {
-    bgLeft () {
-      return `${(this.currentIdx) * (100 / this.total.length)}%`;
+    bgLeft() {
+      return `${this.currentIdx * (100 / this.total.length)}%`;
     },
-    bgRight () {
-      return `${(this.total.length - this.currentIdx - 1) * (100 / this.total.length)}%`;
+    bgRight() {
+      return `${(this.total.length - this.currentIdx - 1) *
+        (100 / this.total.length)}%`;
     }
   };
   onLoad() {
@@ -47,14 +48,14 @@ export default class Selectab extends wepy.component {
       return;
     }
     this.currentValue = this.total[0];
-  };
+  }
   watch = {
     currentValue(val) {
-      this.$emit('selected', val);
+      this.$emit("selected", val);
     }
   };
   methods = {
-    selectNum (val, idx) {
+    selectNum(val, idx) {
       this.currentValue = val;
       this.currentIdx = idx;
     }
